@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
-import { UntypedFormBuilder,ReactiveFormsModule, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  loginForm?: UntypedFormGroup;
-  constructor(private fb: UntypedFormBuilder){}
+  loginForm!: FormGroup;
+  constructor(private fb: FormBuilder) { this.initForm(); }
 
-  ngOnit(){
-    this.initForm();
+  ngOnit() {
+
   }
 
   initForm() {
@@ -39,8 +39,8 @@ export class LoginComponent {
     return this.loginForm?.controls;
   }
 
-  submit(){
-
+  submit() {
+    console.log(this.loginForm.value);
   }
 
 }

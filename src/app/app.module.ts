@@ -36,7 +36,17 @@ import {
 } from '@coreui/angular';
 
 import { IconModule, IconSetService } from '@coreui/icons-angular';
-
+import { HeaderComponent } from './modules/main/header/header.component';
+import { FooterComponent } from './modules/main/footer/footer.component';
+import { MenuSidebarComponent } from './modules/main/menu-sidebar/menu-sidebar.component';
+import { MainComponent } from './modules/main/main.component';
+import { TestComponent } from './pages/test/test.component';
+import { LoginComponent } from './modules/login/login.component';
+import { RegisterComponent } from './modules/register/register.component';
+import { ForgotPasswordComponent } from './modules/forgot-password/forgot-password.component';
+import { RecoverPasswordComponent } from './modules/recover-password/recover-password.component';
+// import { ModulesComponent } from './modules/modules.component';
+// import {ModulesModule} from './modules/modules.module';
 const APP_CONTAINERS = [
   DefaultFooterComponent,
   DefaultHeaderComponent,
@@ -44,7 +54,7 @@ const APP_CONTAINERS = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, ...APP_CONTAINERS],
+  declarations: [AppComponent, ...APP_CONTAINERS, HeaderComponent, FooterComponent, MenuSidebarComponent, MainComponent, TestComponent, LoginComponent, RegisterComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -71,7 +81,8 @@ const APP_CONTAINERS = [
     BadgeModule,
     ListGroupModule,
     CardModule,
-    NgScrollbarModule
+    NgScrollbarModule,
+
   ],
   providers: [
     {

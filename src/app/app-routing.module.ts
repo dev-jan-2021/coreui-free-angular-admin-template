@@ -11,7 +11,7 @@ import { TestComponent } from './pages/test/test.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: '/dashboard',
     pathMatch: 'full'
   },
 
@@ -29,7 +29,7 @@ const routes: Routes = [
           import('./views/dashboard/dashboard.module').then((m) => m.DashboardModule)
       },
       {
-        path:'test', component:TestComponent
+        path: 'test', component: TestComponent
       },
       {
         path: 'theme',
@@ -106,12 +106,13 @@ const routes: Routes = [
       title: 'Register Page'
     }
   },
-  {path: '**', redirectTo: 'dashboard'}
+  { path: '**', redirectTo: 'dashboard' }
 ];
 
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
+      useHash: true,
       scrollPositionRestoration: 'top',
       anchorScrolling: 'enabled',
       initialNavigation: 'enabledBlocking'

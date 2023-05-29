@@ -11,11 +11,9 @@ import { TestComponent } from './pages/test/test.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/dashboard',
+    redirectTo: '/login',
     pathMatch: 'full'
   },
-
-
   {
     path: '',
     component: DefaultLayoutComponent,

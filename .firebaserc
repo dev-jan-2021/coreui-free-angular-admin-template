@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "doctor-booking-system-26700": {
+      "hosting": {
+        "coreui-free-angular-admin-template": [
+          "doctor-booking-system-26700"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "doctor-booking-system-26700"
+  }
+}

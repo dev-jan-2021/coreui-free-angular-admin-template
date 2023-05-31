@@ -6,6 +6,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { NgScrollbarModule } from 'ngx-scrollbar';
 
+
+import { environment } from '../environments/environment';
+
+import { getDatabase, provideDatabase } from '@angular/fire/database';
 // Import routing module
 import { AppRoutingModule } from './app-routing.module';
 
@@ -34,7 +38,8 @@ import {
   TabsModule,
   UtilitiesModule
 } from '@coreui/angular';
-
+import {provideFirebaseApp , initializeApp} from'@angular/fire/app';
+import {getFirestore,provideFirestore} from '@angular/fire/firestore';
 import { IconModule, IconSetService } from '@coreui/icons-angular';
 import { HeaderComponent } from './modules/main/header/header.component';
 import { FooterComponent } from './modules/main/footer/footer.component';
@@ -82,7 +87,9 @@ const APP_CONTAINERS = [
     ListGroupModule,
     CardModule,
     NgScrollbarModule,
-
+provideFirebaseApp(()=>initializeApp(environment.firebaseConfig)),
+provideFirestore(()=>getFirestore()),
+    provideDatabase(() => getDatabase()),
   ],
   providers: [
     {

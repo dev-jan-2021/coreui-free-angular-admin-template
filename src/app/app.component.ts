@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { Firestore, collectionData, collection } from '@angular/fire/firestore';
 
 import { IconSetService } from '@coreui/icons-angular';
 import { iconSubset } from './icons/icon-subset';
@@ -11,6 +12,8 @@ import { Title } from '@angular/platform-browser';
 })
 export class AppComponent implements OnInit {
   title = 'CoreUI Free Angular Admin Template';
+  firestore: Firestore = inject(Firestore);
+
 
   constructor(
     private router: Router,

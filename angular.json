@@ -108,6 +108,13 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "version": 2,
+            "browserTarget": "coreui-free-angular-admin-template:build:production"
+          }
         }
       }
     }

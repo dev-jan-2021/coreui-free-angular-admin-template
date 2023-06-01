@@ -12,8 +12,6 @@ import { Title } from '@angular/platform-browser';
 })
 export class AppComponent implements OnInit {
   title = 'CoreUI Free Angular Admin Template';
-  firestore: Firestore = inject(Firestore);
-
 
   constructor(
     private router: Router,

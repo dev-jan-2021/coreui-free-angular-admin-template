@@ -5,11 +5,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { NgScrollbarModule } from 'ngx-scrollbar';
-
-
-import { environment } from '../environments/environment';
-
-import { getDatabase, provideDatabase } from '@angular/fire/database';
 // Import routing module
 import { AppRoutingModule } from './app-routing.module';
 
@@ -38,8 +33,6 @@ import {
   TabsModule,
   UtilitiesModule
 } from '@coreui/angular';
-import {provideFirebaseApp , initializeApp} from'@angular/fire/app';
-import {getFirestore,provideFirestore} from '@angular/fire/firestore';
 import { IconModule, IconSetService } from '@coreui/icons-angular';
 import { HeaderComponent } from './modules/main/header/header.component';
 import { FooterComponent } from './modules/main/footer/footer.component';
@@ -52,6 +45,13 @@ import { ForgotPasswordComponent } from './modules/forgot-password/forgot-passwo
 import { RecoverPasswordComponent } from './modules/recover-password/recover-password.component';
 // import { ModulesComponent } from './modules/modules.component';
 // import {ModulesModule} from './modules/modules.module';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { environment } from '../environments/environment';
+import { ToastrModule } from 'ngx-toastr';
 const APP_CONTAINERS = [
   DefaultFooterComponent,
   DefaultHeaderComponent,
@@ -63,6 +63,7 @@ const APP_CONTAINERS = [
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     AppRoutingModule,
     AvatarModule,
     BreadcrumbModule,
@@ -87,9 +88,11 @@ const APP_CONTAINERS = [
     ListGroupModule,
     CardModule,
     NgScrollbarModule,
-provideFirebaseApp(()=>initializeApp(environment.firebaseConfig)),
-provideFirestore(()=>getFirestore()),
-    provideDatabase(() => getDatabase()),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+    AngularFireDatabaseModule
   ],
   providers: [
     {

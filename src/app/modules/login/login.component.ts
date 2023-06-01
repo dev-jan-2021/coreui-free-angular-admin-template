@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { User } from 'src/app/shared/user';
+import { AuthService } from '../../shared/auth-service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -8,12 +10,28 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   loginForm!: FormGroup;
-  constructor(private fb: FormBuilder, private router: Router) { }
+  User: User[];
+  constructor(private fb: FormBuilder, private router: Router, public authApi: AuthService) { }
 
   ngOnInit() {
     this.initForm();
-  }
+    this.dataState();
+    let s = this.authApi.getUsers();
+    s.snapshotChanges().subscribe((data) => {
+      this.User = [];
+      data.forEach((item) => {
+        let a = item.payload.toJSON();
+        a['$key'] = item.key;
+        this.User.push(a as User);
+      });
+    });
+    console.log(this.User);
 
+  }
+  dataState() {
+    this.authApi.getUsers().valueChanges().subscribe(data => {
+    })
+  }
   initForm() {
     this.loginForm = this.fb.group({
       email: [

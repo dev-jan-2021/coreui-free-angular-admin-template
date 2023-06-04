@@ -63,7 +63,6 @@ export class RegisterComponent {
     var dd = String(today.getDate()).padStart(2, '0');
     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
     var yyyy = today.getFullYear();
-
     let today_date = yyyy + '-' + mm + '-' + dd;
     console.log(today_date);
     let userObj = {
@@ -74,7 +73,7 @@ export class RegisterComponent {
       isAdmin: 0,
       isActive: 1
     };
-    this.authApi.register(userObj)
+    this.authApi.register(userObj);
     this.toastr.success(
       this.registerForm.controls['name'].value + ' successfully added!'
     );

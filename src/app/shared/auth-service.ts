@@ -15,18 +15,18 @@ export class AuthService {
     register(user: User): any {
         console.log(user);
         this.usersRef = this.db.list('users');
-        if (this.isEmptyObject(user)) {
-            this.usersRef.push(user);
-            /* this.usersRef.push({
-                 name: user.name,
-                 email: user.email,
-                 password: user.password,
-                 createdOn: user.createdOn,
-                 isAdmin: user.isAdmin,
-                 isActive: user.isActive
-             });
-             */
-        }
+        // if (this.isEmptyObject(user)) {
+        this.usersRef.push(user);
+        /* this.usersRef.push({
+             name: user.name,
+             email: user.email,
+             password: user.password,
+             createdOn: user.createdOn,
+             isAdmin: user.isAdmin,
+             isActive: user.isActive
+         });
+         */
+        //  }
     }
     getUsers() {
         this.usersRef = this.db.list('users');

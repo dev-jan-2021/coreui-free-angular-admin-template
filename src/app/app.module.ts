@@ -52,14 +52,19 @@ import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/compat/f
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { environment } from '../environments/environment';
 import { ToastrModule } from 'ngx-toastr';
+//import { PatientListComponent } from './modules/patient-list/patient-list.component';
+import { AddPatientComponent } from './modules/add-patient/add-patient.component';
 const APP_CONTAINERS = [
   DefaultFooterComponent,
   DefaultHeaderComponent,
   DefaultLayoutComponent
 ];
 
+import { TableModule } from '@coreui/angular';
+import { ModalModule } from '@coreui/angular';
+
 @NgModule({
-  declarations: [AppComponent, ...APP_CONTAINERS, HeaderComponent, FooterComponent, MenuSidebarComponent, MainComponent, TestComponent, LoginComponent, RegisterComponent],
+  declarations: [AppComponent, ...APP_CONTAINERS, HeaderComponent, FooterComponent, MenuSidebarComponent, MainComponent, TestComponent, LoginComponent, RegisterComponent, AddPatientComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -92,7 +97,9 @@ const APP_CONTAINERS = [
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireStorageModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    TableModule,
+    ModalModule
   ],
   providers: [
     {

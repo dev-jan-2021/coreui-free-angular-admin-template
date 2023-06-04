@@ -8,6 +8,8 @@ import { LoginComponent } from './modules/login/login.component';
 import { RegisterComponent } from './modules/register/register.component';
 import { TestComponent } from './pages/test/test.component';
 
+
+
 const routes: Routes = [
   {
     path: '',
@@ -21,6 +23,11 @@ const routes: Routes = [
       title: 'Home'
     },
     children: [
+      {
+        path:'patient-list',
+        loadChildren: () =>
+          import('./modules/patient-list/patirnt-list.module').then((m) => m.PateintListModule)
+      },
       {
         path: 'dashboard',
         loadChildren: () =>

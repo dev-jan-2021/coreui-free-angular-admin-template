@@ -10,27 +10,13 @@ import { AuthService } from '../../shared/auth-service';
 })
 export class LoginComponent {
   loginForm!: FormGroup;
-  User: User[];
+  User: any;
   constructor(private fb: FormBuilder, private router: Router, public authApi: AuthService) { }
 
   ngOnInit() {
     this.initForm();
-    this.dataState();
-    let s = this.authApi.getUsers();
-    s.snapshotChanges().subscribe((data) => {
-      this.User = [];
-      data.forEach((item) => {
-        let a = item.payload.toJSON();
-        a['$key'] = item.key;
-        this.User.push(a as User);
-      });
-    });
+    this.User = this.authApi.getUsers();
     console.log(this.User);
-
-  }
-  dataState() {
-    this.authApi.getUsers().valueChanges().subscribe(data => {
-    })
   }
   initForm() {
     this.loginForm = this.fb.group({
